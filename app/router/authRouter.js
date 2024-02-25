@@ -48,7 +48,7 @@ async function signupMiddleWare(req,res,next){
         next()
         }
         catch(e){
-            res.redirect('/signup?error=Server error e.g Database error contact admin"')
+            res.redirect('/signup?error=Server error e.g Database error contact admin')
         }
     }
     else{
