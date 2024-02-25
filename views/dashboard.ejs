@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="./style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IP Information</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <% if (errorMessage) { %>
+        <div id="error-message">
+            <p><%= errorMessage %></p>
+        </div>
+    <% } %>
+  <h2>IP Information</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>IP</th>
+        <th>Hostname</th>
+        <th>City</th>
+        <th>Region</th>
+        <th>Country</th>
+        <th>Location</th>
+        <th>Organization</th>
+        <th>Postal Code</th>
+        <th>Timezone</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% ipInformation.forEach((info,index) => { %>
+        <tr>
+          <td><%= index+1 %></td>
+          <td><%= info.ip %></td>
+          <td><%= info.hostname %></td>
+          <td><%= info.city %></td>
+          <td><%= info.region %></td>
+          <td><%= info.country %></td>
+          <td><%= info.loc %></td>
+          <td><%= info.org %></td>
+          <td><%= info.postal %></td>
+          <td><%= info.timezone %></td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+
+  <button>Logout</button>
+  <script>
+    var button=document.querySelector("button");
+    button.onclick=logout
+
+    function logout(){
+        window.location="/logout";
+    }
+  </script>
+</body>
+</html>
