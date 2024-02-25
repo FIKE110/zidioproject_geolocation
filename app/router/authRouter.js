@@ -28,6 +28,7 @@ function loginMiddleware(req,res,next){
 async function signupMiddleWare(req,res,next){
     const message=signupSchema.safeParse(req.body)
     if(message.success){
+        try{
         const {name,email}=req.body
         const verifysqlName=`SELECT name FROM zidiousers WHERE name=? `
         const resultverify=await query(verifysqlName,[name])
@@ -45,6 +46,10 @@ async function signupMiddleWare(req,res,next){
         }
 
         next()
+        }
+        catch(e){
+            res.redirect('/signup?error=Server error e.g Database error contact admin"')
+        }
     }
     else{
         res.redirect(`/signup?error=${message.error.issues[0].message}`)

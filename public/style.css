@@ -131,7 +131,7 @@ form p a{
     width: 40%;
     left:30%;
     overflow:hidden;
-    animation: slideAnimation 3600ms forwards ease-in-out;
+    animation: slideAnimation 5s forwards ease-in-out;
 }
 
 #error-message p{

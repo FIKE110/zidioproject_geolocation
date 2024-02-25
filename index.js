@@ -27,6 +27,10 @@ app.set('view engine', 'ejs');
 
 createConnection()
 
+app.get('/',(req,res)=>{
+    res.redirect('login')
+})
+
 app.get("/login",(req,res)=>{
     if(req.session?.userid){
         res.redirect("/dashboard")
@@ -73,6 +77,10 @@ app.get('/logout', (req, res) => {
       }
     });
   });
+
+  app.get("*",(req,res)=>{
+    res.render("404")
+  })
 
 app.listen(3000,()=>{
     console.log("Server started")

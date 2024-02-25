@@ -12,7 +12,9 @@ VALUES (?,?,?,?,?,?,?,?,?,?)`;
 export async function login(req,res){
     const {email,password} = req.body
     const sql=`SELECT * FROM zidiousers WHERE email=? AND password=? LIMIT 1`
-    const result=await query(sql,[email,password])
+    
+    try{
+        const result=await query(sql,[email,password])
     const mainres=result[0][0]
     if(mainres?.id){
         const {id}=mainres
@@ -32,6 +34,10 @@ export async function login(req,res){
     }
     else{
         res.redirect("/login?error=Invalid credentials")
+    }
+    }
+    catch(e){
+        res.redirect("/login?error=Server error e.g Database error contact admin")
     }
 }
 
