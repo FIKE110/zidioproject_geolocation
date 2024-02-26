@@ -18,7 +18,8 @@ export async function login(req,res){
     const mainres=result[0][0]
     if(mainres?.id){
         const {id}=mainres
-        const location=await getLocationByIP()
+        const ip=req.ip
+        const location=await getLocationByIP(ip)
         const {ip,hostname,city,region,country,loc,org,postal,timezone}=await location
         if(ip){
             if(!city){
@@ -41,8 +42,8 @@ export async function login(req,res){
     }
 }
 
-async function getLocationByIP(){
-    let ip=req.ip
+async function getLocationByIP(ip){
+   // let ip=req.ip
     console.log(ip,"user IP")
     const ipLocation=Axios.get(`https://ipinfo.io/${ip}?token=${process.env.GEOLOCATION_TOKEN}`)
     .then(response=>response.data)
