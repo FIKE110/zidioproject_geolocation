@@ -48,6 +48,8 @@ async function getLocationByIP(){
     req.headers['x-forwarded-for'] ||
     req.socket.remoteAddress ||  
     req.ip || '';
+
+    console.log(ip)
     const ipLocation=Axios.get(`https://ipinfo.io/${ip}?token=${process.env.GEOLOCATION_TOKEN}`)
     .then(response=>response.data)
     .then(data=>data)
