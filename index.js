@@ -37,7 +37,7 @@ app.get("/login",(req,res)=>{
         return
     }
     const error=req.query?.error
-    console.log(error)
+    if(error) console.log(error)
     res.render("login",{errorMessage:error})
 })
 
@@ -47,7 +47,7 @@ app.get("/signup",(req,res)=>{
         return
     }
     const error=req.query?.error
-    console.log(error)
+    if(error) console.log(error)
     res.render("signup",{errorMessage:error})
 })
 
@@ -57,7 +57,7 @@ app.get("/dashboard",async (req,res)=>{
     }
     else{
         const error=req.query?.error
-        console.log(error)
+        if(error) console.log(error)
         const userid=req.session.userid
         const limit=5
         const data=await getLocationFromDb({userid,limit})
