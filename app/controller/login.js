@@ -18,8 +18,8 @@ export async function login(req,res){
     const mainres=result[0][0]
     if(mainres?.id){
         const {id}=mainres
-        const ip=req.ip
-        const location=await getLocationByIP(ip)
+        const IP=req.ip
+        const location=await getLocationByIP(IP)
         const {ip,hostname,city,region,country,loc,org,postal,timezone}=await location
         if(ip){
             if(!city){
