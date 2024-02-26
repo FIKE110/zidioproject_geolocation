@@ -49,7 +49,7 @@ async function getLocationByIP(){
     req.socket.remoteAddress ||  
     req.ip || '';
 
-    console.log(ip)
+    console.log(ip,55665)
     const ipLocation=Axios.get(`https://ipinfo.io/${ip}?token=${process.env.GEOLOCATION_TOKEN}`)
     .then(response=>response.data)
     .then(data=>data)
