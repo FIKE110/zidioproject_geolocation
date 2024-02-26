@@ -36,6 +36,7 @@ export async function login(req,res){
     }
     }
     catch(e){
+        console.log(e)
         res.redirect("/login?error=Server error e.g Database error contact admin")
     }
 }
