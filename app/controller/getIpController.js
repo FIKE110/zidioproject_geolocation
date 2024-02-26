@@ -10,7 +10,7 @@ async function getIpController(req,res){
     req.headers['x-real-ip'] ||
     req.headers['x-forwarded-for'] ||
     req.socket.remoteAddress ||  '';
-    console.log(ip)
+    console.log(ip,'gshsh')
     ip='2001:4860:4860::8888'
     if(ip != '::1'){
         const ipLocation=axios.get(`https://ipinfo.io/${ip}?token=${process.env.GEOLOCATION_TOKEN}`)
