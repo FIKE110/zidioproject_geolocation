@@ -8,7 +8,7 @@ const config={
     user:process.env.MYSQL_USER,
     password:process.env.MYSQL_PASSWORD,
     database:process.env.MYSQL_DB,
-    port: 28942
+    port: process.env.MYSQL_PORT
 }
 
 let pool=null

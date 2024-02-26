@@ -5,12 +5,15 @@ import session from "express-session"
 import { createConnection} from "./config/db.js"
 import IPRouter from "./app/router/IPRouter.js"
 import {getLocationFromDb} from "./app/controller/dashboardController.js"
+import dotenv from "dotenv"
+
+dotenv.config()
 
 const app=express()
 app.use(cors())
 app.use(express.json())
 app.use(session({
-    secret:"secret-key-iyke",
+    secret:process.env.SESSION_KEY,
     resave:false,
     saveUninitialized:true,
     cookie:{secure:false}
@@ -82,6 +85,6 @@ app.get('/logout', (req, res) => {
     res.render("404")
   })
 
-app.listen(3000,()=>{
+app.listen(process.env.EXPRESS_PORT || 3000,()=>{
     console.log("Server started")
 })
