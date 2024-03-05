@@ -80,45 +80,44 @@
         </style>
 </head>
 <body>
-    <% if (errorMessage) { %>
-        <div id="error-message">
-            <p><%= errorMessage %></p>
-        </div>
-    <% } %>
-  <h2>IP Information</h2>
+   <div id="panel">
+    <h1>Welcome <%= name %></h1>
+   </div>
+    <div class="table-container"> 
+    <table>
+ <tr>
+            <th>S/N</th>
+            <th>IP</th>
+            <th>Hostname</th>
+            <th>City</th>
+            <th>Region</th>
+            <th>Country</th>
+            <th>Location</th>
+            <th>Organisation</th>
+            <th>Postal Code</th>
+            <th>Time zone</th>
+            <th>Login date</th>
 
-  <table>
-    <thead>
-      <tr>
-        <th>S/N</th>
-        <th>IP</th>
-        <th>Hostname</th>
-        <th>City</th>
-        <th>Region</th>
-        <th>Country</th>
-        <th>Location</th>
-        <th>Organization</th>
-        <th>Postal Code</th>
-        <th>Timezone</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% ipInformation.forEach((info,index) => { %>
-        <tr>
-          <td><%= index+1 %></td>
-          <td><%= info.ip %></td>
-          <td><%= info.hostname %></td>
-          <td><%= info.city %></td>
-          <td><%= info.region %></td>
-          <td><%= info.country %></td>
-          <td><%= info.loc %></td>
-          <td><%= info.org %></td>
-          <td><%= info.postal %></td>
-          <td><%= info.timezone %></td>
         </tr>
-      <% }); %>
-    </tbody>
-  </table>
+        <tbody>
+            <% ipInformation.forEach((info,index) => { %>
+              <tr>
+                <td><%= index+1 %></td>
+                <td><%= info.ip %></td>
+                <td><%= info.hostname %></td>
+                <td><%= info.city %></td>
+                <td><%= info.region %></td>
+                <td><%= info.country %></td>
+                <td><%= info.loc %></td>
+                <td><%= info.org %></td>
+                <td><%= info.postal %></td>
+                <td><%= info.timezone %></td>
+                <td><%= info.login_date %></td>
+              </tr>
+            <% }); %>
+          </tbody>
+    </table>
+    </div>
 
     <button>Logout</button>
     <script>
