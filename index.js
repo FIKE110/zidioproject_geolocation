@@ -64,8 +64,9 @@ app.get("/dashboard",async (req,res)=>{
         const userid=req.session.userid
         const limit=5
         const data=await getLocationFromDb({userid,limit})
-        const ipInformation=await data[0]
-        res.render("dashboard",{ipInformation,errorMessage:error})
+        const ipInformation=await data.result[0]
+        const name=data.result2[0][0].name
+        res.render("dashboard",{name,ipInformation,errorMessage:error})
     }
 })
 
